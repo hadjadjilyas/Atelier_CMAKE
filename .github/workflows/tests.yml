@@ -129,12 +129,6 @@ jobs:
           cd build
           set -e
           echo "== Test car 5 ==" > report.txt
-          echo "-- ls build/src --" >> report.txt
-          ls -l build/src >> report.txt 2>&1 || true
-          echo "-- file info --" >> report.txt
-          file build/src/calculator >> report.txt 2>&1 || true
-          echo "-- binary strings (grep car/add) --" >> report.txt
-          strings build/src/calculator | grep -E "car|add|Erreur" >> report.txt 2>&1 || true
           ./src/calculator car 5 | tee -a report.txt
           echo "Exit code: $?" >> report.txt
 
