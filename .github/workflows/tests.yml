@@ -41,6 +41,7 @@ jobs:
       - name: Test fonction add
         run: |
           cd build
+          chmod +x ./src/calculator || true
           ./src/calculator add 10 5
 
   Test_Sub:
@@ -55,6 +56,7 @@ jobs:
       - name: Test fonction sub
         run: |
           cd build
+          chmod +x ./src/calculator || true
           ./src/calculator sub 10 5
 
   Test_Mul:
@@ -69,6 +71,7 @@ jobs:
       - name: Test fonction mul
         run: |
           cd build
+          chmod +x ./src/calculator || true
           ./src/calculator mul 5 5
 
   Test_Div:
@@ -83,6 +86,7 @@ jobs:
       - name: Test fonction div
         run: |
           cd build
+          chmod +x ./src/calculator || true
           ./src/calculator div 10 2
 
   Test_Car:
@@ -97,4 +101,5 @@ jobs:
       - name: Test fonction car
         run: |
           cd build
+          chmod +x ./src/calculator || true
           ./src/calculator car 5
