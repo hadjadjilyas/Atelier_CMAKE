@@ -1,16 +1,29 @@
 name: Automatisation des tests
 on: push
 jobs:
-  Compilation:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Compilation
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
         run: |
-          last_directory=$(basename ${{ runner.workspace }})
-          git clone https://github.com/${{ github.repository }}.git
-          cd ./$last_directory
-          mkdir build
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake
+
+      - name: Configure CMake
+        run: |
+          mkdir -p build
           cd build
           cmake ..
-          make
-          make test
+
+      - name: Build
+        run: |
+          cd build
+          cmake --build . --config Release
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure
